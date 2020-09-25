@@ -9,7 +9,7 @@ fetch('http://jsonplaceholder.typicode.com/comments/'+id) //1
       }
       // Examine the text in the response
       response.json().then(function(data1) {
-        console.log(data1);
+        console.log("here i am ",data1);
         document.getElementById("inputPostID").value=data1.postId;
         document.getElementById("inputID").value=data1.id;
         document.getElementById("inputName").value=data1.name;

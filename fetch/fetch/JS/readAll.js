@@ -1,4 +1,4 @@
-fetch('http://jsonplaceholder.typicode.com/posts') //1
+fetch('http://jsonplaceholder.typicode.com/albums') //1
   .then(
     function(response) {
       if (response.status !== 200) {
@@ -9,7 +9,6 @@ fetch('http://jsonplaceholder.typicode.com/posts') //1
       // Examine the text in the response
       response.json().then(function(data1) {
         console.log("here is my data",data1);
-
         let table = document.querySelector("table");
         let data = Object.keys(data1[0]);
 
@@ -20,7 +19,6 @@ fetch('http://jsonplaceholder.typicode.com/posts') //1
   )
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
-
   });
 
 function generateTableHead(table, data) {
@@ -37,6 +35,10 @@ function generateTableHead(table, data) {
   let text1 = document.createTextNode("Delete");
   th1.appendChild(text1);
   row.appendChild(th1);
+  let th2 =document.createElement("th");
+  let text2 =document.createTextNode("Edit")
+  th2.appendChild(text2)
+  row.appendChild(th2)
 }
 
 function generateTable(table, data) {
@@ -47,15 +49,15 @@ function generateTable(table, data) {
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
-    let cell1 = row.insertCell();
-    let text1 = document.createElement("a");
-    text1.innerHTML=("Delete")
-    text1.className= ("btn btn-danger")
-    text1.href="http://jsonplaceholder.typicode.com/comments/delete/"+element.id
-    cell1.appendChild(text1);
+    // let cell1 = row.insertCell();
+    // let text1 = document.createElement("a");
+    // text1.innerHTML=("Delete")
+    // text1.className= ("btn btn-danger")
+    // text1.href="http://jsonplaceholder.typicode.com/comments/delete/"+element.id
+    // cell1.appendChild(text1);
     let cell2 = row.insertCell();
     let text2 = document.createElement("a");
-    text2.innerHTML=("view")
+    text2.innerHTML=("View")
     text2.className= ("btn btn-info")
     text2.href="create.html?"+element.id
     cell2.appendChild(text2);
